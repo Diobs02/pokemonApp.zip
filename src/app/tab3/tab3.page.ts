@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  pokemon: any;
+
+  constructor(private pokemonService: PokemonService) {}
+  
+  ionViewDidEnter(){
+    this.pokemonService.pokemonResult$.subscribe((result) => this.pokemon = result)
+  }
 
 }
